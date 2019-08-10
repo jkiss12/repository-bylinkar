@@ -1,12 +1,12 @@
 
-public class Plant {
-	private String svkName;
+class Plant {
 	private String latName;
+	private String svkName;
 	private String page;
 	
-	public Plant(String s,String l, String p) {
-		svkName = s;
+	public Plant(String l,String s, String p) {
 		latName = l;
+		svkName = s;
 		page = p;
 	}
 
@@ -31,5 +31,8 @@ public class Plant {
 		return page;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return svkName;
+	}
 }

@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 /**
  * 
@@ -20,7 +21,30 @@ public class BylinkarSimple {
 	}
 
 	public void go() {
-		Plant p1 = new Plant("Kamilka", "Camomile", "12");
-		System.out.println(p1.getLatName());
+		readAFile(); 
+		System.out.println(plantList);
+		
+	}
+	
+	void readAFile() {
+		
+		try {
+			File file = new File("src/Bylinky.txt");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine())!= null) {
+				makePlant(line);
+			}
+			reader.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void makePlant(String lineToParse) {
+		String[] part = lineToParse.split("/");
+		Plant  nextPlant = new Plant(part[0], part[1], part[2]);
+		plantList.add(nextPlant);
 	}
 }
